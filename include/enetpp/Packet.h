@@ -32,14 +32,16 @@ namespace enetpp
 
     class Packet
     {
+        friend class ENet;
+        friend class Event;
         friend class Host;
         friend class Peer;
 
         ENetPacket* _packet;
-    public:
+
         Packet(ENetPacket* packet);
         Packet(const void* data, size_t dataLength, enet_uint32 flags);
-
+    public:
         void destroy();
         size_t dataLength() const;
         const enet_uint8* data() const;

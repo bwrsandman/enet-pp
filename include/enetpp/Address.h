@@ -32,14 +32,17 @@ namespace enetpp
 
     class Address
     {
+        friend class ENet;
         friend class Host;
+        friend class Peer;
 
         ENetAddress _address;
-    public:
+
         Address();
         Address(const ENetAddress& address);
         Address(enet_uint32 host, int port);
         Address(const char* hostName, int port);
+    public:
         void setHost(const char* hostName);
         void setHost(enet_uint32 host);
         enet_uint32 host() const;

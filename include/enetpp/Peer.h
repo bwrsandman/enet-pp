@@ -34,11 +34,13 @@ namespace enetpp
 
     class Peer
     {
+        friend class Event;
         friend class Host;
 
         ENetPeer* _peer;
-    public:
+
         Peer(ENetPeer* peer);
+    public:
         Address address();
         void setData(const void* data);
         const void* data() const;

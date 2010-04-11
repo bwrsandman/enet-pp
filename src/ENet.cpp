@@ -50,6 +50,11 @@ namespace enetpp
         return Address(host, port);
     }
 
+    Event ENet::createEvent()
+    {
+        return Event();
+    }
+
     Host ENet::createServerHost(const Address& address, int maxClients, int incomingBandwidth, int outgoingBandwidth)
     {
         return Host(this, address, maxClients, incomingBandwidth, outgoingBandwidth);

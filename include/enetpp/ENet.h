@@ -44,6 +44,8 @@ namespace enetpp
         Address createAddress(enet_uint32 host, int port);
         Address createAddress(const char* hostName, int port);
 
+        Event createEvent();
+
         Host createServerHost(const Address& address, int maxClients, int incomingBandwidth = 0, int outgoingBandwidth = 0);
         Host createClientHost(int maxClients, int incomingBandwidth = 0, int outgoingBandwidth = 0);
         

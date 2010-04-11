@@ -34,12 +34,13 @@ namespace enetpp
 
     class Event
     {
+        friend class ENet;
         friend class Host;
 
         ENetEvent _event;
-    public:
-        Event();
 
+        Event();
+    public:
         Packet packet();
         Peer peer();
         ENetEventType type() const;

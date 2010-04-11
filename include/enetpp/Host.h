@@ -39,12 +39,15 @@ namespace enetpp
 
     class Host
     {
+        friend class ENet;
+
         ENet* _parent;
         ENetHost* _host;
         std::vector< ENetPeer* > _allPeers;
-    public:
+
         Host(ENet* parent, const Address& address, size_t maxClients, enet_uint32 incomingBandwidth, enet_uint32 outgoingBandwidth);
         Host(ENet* parent, size_t maxClients, enet_uint32 incomingBandwidth, enet_uint32 outgoingBandwidth);
+    public:
         ~Host();
 
         void destroy();
