@@ -40,6 +40,16 @@ namespace enetpp
         enet_deinitialize();
     }
 
+    Address ENet::createAddress(const char *hostName, int port)
+    {
+        return Address(hostName, port);
+    }
+
+    Address ENet::createAddress(enet_uint32 host, int port)
+    {
+        return Address(host, port);
+    }
+
     Host ENet::createServerHost(const Address& address, int maxClients, int incomingBandwidth, int outgoingBandwidth)
     {
         return Host(this, address, maxClients, incomingBandwidth, outgoingBandwidth);
