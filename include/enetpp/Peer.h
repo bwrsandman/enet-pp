@@ -42,8 +42,8 @@ namespace enetpp
         Peer(ENetPeer* peer);
     public:
         Address address();
-        void setData(const void* data);
-        const void* data() const;
+        void setData(void* data);
+        void* data() const;
         int send(enet_uint8 channelID, Packet &packet);
         void disconnect(enet_uint32 data = 0);
         void disconnectLater(enet_uint32 data = 0);

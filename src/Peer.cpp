@@ -37,12 +37,12 @@ namespace enetpp
         return Address(_peer->address);
     }
 
-    void Peer::setData(const void *data)
+    void Peer::setData(void *data)
     {
-        _peer->data = const_cast<void*>(data);
+        _peer->data = data;
     }
 
-    const void* Peer::data() const
+    void* Peer::data() const
     {
         return _peer->data;
     }
