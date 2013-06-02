@@ -46,8 +46,8 @@ namespace enetpp
 
         Event createEvent();
 
-        Host createServerHost(const Address& address, int maxClients, int incomingBandwidth = 0, int outgoingBandwidth = 0);
-        Host createClientHost(int maxClients, int incomingBandwidth = 0, int outgoingBandwidth = 0);
+        Host createServerHost(const Address& address, int maxClients, int maxChannels = 0, int incomingBandwidth = 0, int outgoingBandwidth = 0);
+        Host createClientHost(int maxClients, int maxChannels = 0, int incomingBandwidth = 0, int outgoingBandwidth = 0);
         
         Packet createPacket(const void* data, size_t dataLength, enet_uint32 flags);
     };

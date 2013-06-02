@@ -50,7 +50,7 @@ namespace enetpp
         void disconnectNow(enet_uint32 data = 0);
         void reset();
         void ping();
-        Packet receive(enet_uint32 channelID);
+        Packet receive(enet_uint8* channelID);
         int throttle(enet_uint32 rtt);
         void throttleConfigure(enet_uint32 interval, enet_uint32 acceleration, enet_uint32 deceleration);
     };

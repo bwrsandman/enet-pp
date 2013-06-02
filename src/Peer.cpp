@@ -79,7 +79,7 @@ namespace enetpp
         enet_peer_ping(_peer);
     }
 
-    Packet Peer::receive(enet_uint32 channelID)
+    Packet Peer::receive(enet_uint8* channelID)
     {
         return Packet(enet_peer_receive(_peer, channelID));
     }

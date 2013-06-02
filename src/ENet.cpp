@@ -55,14 +55,14 @@ namespace enetpp
         return Event();
     }
 
-    Host ENet::createServerHost(const Address& address, int maxClients, int incomingBandwidth, int outgoingBandwidth)
+    Host ENet::createServerHost(const Address& address, int maxClients, int maxChannels, int incomingBandwidth, int outgoingBandwidth)
     {
-        return Host(this, address, maxClients, incomingBandwidth, outgoingBandwidth);
+        return Host(this, address, maxClients, maxChannels, incomingBandwidth, outgoingBandwidth);
     }
 
-    Host ENet::createClientHost(int maxClients, int incomingBandwidth, int outgoingBandwidth)
+    Host ENet::createClientHost(int maxClients, int maxChannels, int incomingBandwidth, int outgoingBandwidth)
     {
-        return Host(this, maxClients, incomingBandwidth, outgoingBandwidth);
+        return Host(this, maxClients, maxChannels, incomingBandwidth, outgoingBandwidth);
     }
 
     Packet ENet::createPacket(const void* data, size_t dataLength, enet_uint32 flags)

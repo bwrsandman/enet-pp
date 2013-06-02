@@ -45,14 +45,14 @@ namespace enetpp
         ENetHost* _host;
         std::vector< ENetPeer* > _allPeers;
 
-        Host(ENet* parent, const Address& address, size_t maxClients, enet_uint32 incomingBandwidth, enet_uint32 outgoingBandwidth);
-        Host(ENet* parent, size_t maxClients, enet_uint32 incomingBandwidth, enet_uint32 outgoingBandwidth);
+        Host(ENet* parent, const Address& address, size_t maxClients, size_t maxChannels, enet_uint32 incomingBandwidth, enet_uint32 outgoingBandwidth);
+        Host(ENet* parent, size_t maxClients, size_t maxChannels, enet_uint32 incomingBandwidth, enet_uint32 outgoingBandwidth);
     public:
         ~Host();
 
         void destroy();
         int service(Event& event, enet_uint32 timeoutMillis = 0);
-        Peer connect(const Address& address, size_t channelCount);
+        Peer connect(const Address& address, size_t channelCount, enet_uint32 userData);
         void broadcast(enet_uint8 channelID, Packet& packet);
         void flush();
         void bandwidthThrottle();

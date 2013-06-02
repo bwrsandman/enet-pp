@@ -25,21 +25,22 @@
 #include "enetpp/ENet.h"
 
 #include <stdexcept>
+#include <algorithm>
 
 namespace enetpp
 {
 
-    Host::Host(ENet* parent, const Address& address, size_t maxClients, enet_uint32 incomingBandwidth, enet_uint32 outgoingBandwidth) :
+    Host::Host(ENet* parent, const Address& address, size_t maxClients, size_t maxChannels, enet_uint32 incomingBandwidth, enet_uint32 outgoingBandwidth) :
             _parent(parent),
-            _host(enet_host_create(&address._address, maxClients, incomingBandwidth, outgoingBandwidth))
+            _host(enet_host_create(&address._address, maxClients, maxChannels, incomingBandwidth, outgoingBandwidth))
     {
         if (NULL == _host)
             throw std::runtime_error("An error occurred while trying to create an ENet server host");
     }
 
-    Host::Host(ENet* parent, size_t maxClients, enet_uint32 incomingBandwidth, enet_uint32 outgoingBandwidth) :
+    Host::Host(ENet* parent, size_t maxClients, size_t maxChannels, enet_uint32 incomingBandwidth, enet_uint32 outgoingBandwidth) :
             _parent(parent),
-            _host(enet_host_create(NULL, maxClients, incomingBandwidth, outgoingBandwidth))
+            _host(enet_host_create(NULL, maxClients, maxChannels, incomingBandwidth, outgoingBandwidth))
     {
         if (NULL == _host)
             throw std::runtime_error("An error occurred while trying to create an ENet client host");
@@ -82,9 +83,9 @@ namespace enetpp
         }
     }
 
-    Peer Host::connect(const Address& address, size_t channelCount)
+    Peer Host::connect(const Address& address, size_t channelCount, enet_uint32 userData)
     {
-        ENetPeer* peer = enet_host_connect(_host, &address._address, channelCount);
+        ENetPeer* peer = enet_host_connect(_host, &address._address, channelCount, userData);
         if (NULL == peer)
             throw std::runtime_error("Creating connection failed");
 
